@@ -46,9 +46,13 @@ class CQT_Chroma_Extractor(object):
             frame[1:] -= frame[:-1] * 0.95
             #Librosa CQT 
 <<<<<<< HEAD
+<<<<<<< HEAD
             
 =======
 >>>>>>> 411f71b0e3852d4ca5e979dc3fccf64df52a6212
+=======
+            
+>>>>>>> upstream/master
             #TODO!!!!!!!! http://librosa.github.io/librosa/generated/librosa.feature.chroma_cqt.html#librosa.feature.chroma_cqt
 
             feature.append(feature)
