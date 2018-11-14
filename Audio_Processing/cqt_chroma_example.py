@@ -32,7 +32,7 @@ import librosa.display
 
 #######################################################################
 # We'll use a track that has harmonic, melodic, and percussive elements
-y, sr = librosa.load('C:\Users\janna\Downloads\Automatic_Cover_Detection-master\Automatic_Cover_Detection-master\Tests\The_Specials_-_You_re_Wondering_Now-xEPfSWk0Lsw.wav')
+y, sr = librosa.load('C:\Users\janna\Documents\MATT\DSAP\Projecte\Automatic_Cover_Detection-master\Tests\Amy_Winehouse_-_You_re_Wondering_Now-9b3lo5a3iEk.wav')
 
 
 #######################################
