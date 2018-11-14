@@ -29,6 +29,7 @@ def test_spectogram(wav_file='Tests/Amy_Winehouse_-_You_re_Wondering_Now-9b3lo5a
 	           vmin=np.min(10*np.transpose(np.log(features))), vmax=np.max(10*np.transpose(np.log(features))), origin='lowest', aspect='auto')
 	plt.colorbar()
 
+
 	plt.title("Spectogram")
 
 
@@ -176,7 +177,6 @@ def compare_wondering(wav_files=['Tests/Amy_Winehouse_-_You_re_Wondering_Now-9b3
 	max_chord1=np.max(features1, axis=0)
 	plt.figure()
 	plt.subplot(2, 1, 1)
-
 	plt.title("Chromas")
 
 	#features = np.array(features).transpose()
@@ -190,8 +190,6 @@ def compare_wondering(wav_files=['Tests/Amy_Winehouse_-_You_re_Wondering_Now-9b3
 
 	librosa.display.specshow(features2, y_axis='chroma', x_axis='time')
 
-
-	librosa.display.specshow(features2, y_axis='chroma', x_axis='time')	
 
 	# Dominant chord chromas
 	new_chromas1=[]
@@ -219,7 +217,6 @@ def compare_wondering(wav_files=['Tests/Amy_Winehouse_-_You_re_Wondering_Now-9b3
 	plt.colorbar()
 	plt.title("Dominant chord chromas")
 
-	plt.colorbar() 
 
 	plt.subplot(2, 1, 2)
 	librosa.display.specshow(new_chroma2, y_axis='chroma', x_axis='time')
@@ -245,15 +242,12 @@ def compare_wondering(wav_files=['Tests/Amy_Winehouse_-_You_re_Wondering_Now-9b3
 
 	plt.plot(tempo2*np.ones(len(tempo_vec2)))
 
-	plt.plot(tempo2*np.ones(len(tempo_vec2)))	
-
 #test_spectogram()
 #test_beats()
 #test_beat_chroma()
 #test_projection_TSNE()
 compare_wondering()
 
-plt.show()
 
 plt.show()
 

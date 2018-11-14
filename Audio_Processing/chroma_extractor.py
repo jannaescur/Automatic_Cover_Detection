@@ -1,24 +1,8 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 from __future__ import division
-
-=======
->>>>>>> 411f71b0e3852d4ca5e979dc3fccf64df52a6212
-=======
-from __future__ import division
-
->>>>>>> upstream/master
 from numpy import *
 import librosa
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 411f71b0e3852d4ca5e979dc3fccf64df52a6212
-=======
->>>>>>> upstream/master
 class Chroma_Extractor(object):
     """
     Returns the spectrum of an audio file
@@ -31,15 +15,9 @@ class Chroma_Extractor(object):
         mel = Convert to mel scale
         normalize = normalize each freq bin aling frames
     """
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     def __init__(self, fs, win_length_ms=25, win_shift_ms=10, FFT_SIZE=512, n_bands=12,mel=False, normalize=True, beat_based=False,beat=0):
-=======
-    def __init__(self, fs, win_length_ms=25, win_shift_ms=10, FFT_SIZE=512, n_bands=12,mel=False, normalize=True):
->>>>>>> 411f71b0e3852d4ca5e979dc3fccf64df52a6212
-=======
-    def __init__(self, fs, win_length_ms=25, win_shift_ms=10, FFT_SIZE=512, n_bands=12,mel=False, normalize=True, beat_based=False,beat=0):
->>>>>>> upstream/master
+
         self.fs = fs
         self.FFT_SIZE = FFT_SIZE
         self.FRAME_LEN = int(float(win_length_ms) / 1000 * fs)
@@ -47,16 +25,10 @@ class Chroma_Extractor(object):
         self.window = hamming(self.FRAME_LEN)
         self.n_bands = n_bands
         self.normalize = normalize
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         self.beat_based=beat_based
         self.beat=beat
-=======
->>>>>>> 411f71b0e3852d4ca5e979dc3fccf64df52a6212
-=======
-        self.beat_based=beat_based
-        self.beat=beat
->>>>>>> upstream/master
+
 
 
     def extract(self, signal):
@@ -66,10 +38,7 @@ class Chroma_Extractor(object):
         if signal.ndim > 1:
             print "INFO: Input signal has more than 1 channel; the channels will be averaged."
             signal = mean(signal, axis=1)
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> upstream/master
+
         if self.beat_based:
             beat_samples= int(self.fs/self.beat)*60
             print beat_samples
@@ -83,53 +52,5 @@ class Chroma_Extractor(object):
             chroma = librosa.feature.chroma_stft(S=s_2, sr=self.fs)
             feature=chroma
             return feature
-        '''
-<<<<<<< HEAD
-=======
->>>>>>> 411f71b0e3852d4ca5e979dc3fccf64df52a6212
-=======
->>>>>>> upstream/master
-        frames = (len(signal) - self.FRAME_LEN) / self.FRAME_SHIFT + 1
-        feature = []
-        for f in xrange(frames):
-            # Windowing
-            frame = signal[f * self.FRAME_SHIFT : f * self.FRAME_SHIFT +
-                           self.FRAME_LEN] * self.window
-            # Pre-emphasis
-            frame[1:] -= frame[:-1] * 0.95
-            #Librosa chromas
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> upstream/master
-            print frame.shape
-            s_2=abs(librosa.stft(frame, n_fft=4096,win_length=4096,window=ones(4096)))**2
-            #print S.shape
-            print s_2.shape
-            chroma = librosa.feature.chroma_stft(S=s_2, sr=self.fs)
-            print chroma.shape
-            #frame=librosa.feature.chroma_stft(y=frame, sr=self.fs,  n_chroma=self.n_bands)
-            feature.append(chroma)
-        feature = array(feature)
-        '''
-<<<<<<< HEAD
-=======
-            frame=librosa.feature.chroma_stft(y=frame, sr=self.fs, n_fft=self.FFT_size, n_chroma=self.n_bands)
-            feature.append(feature)
-        feature = row_stack(feature)
->>>>>>> 411f71b0e3852d4ca5e979dc3fccf64df52a6212
-=======
->>>>>>> upstream/master
-        # Mean & variance normalization
-        if feature.shape[0] > 1 and self.normalize:
-            mu = mean(feature, axis=0)
-            #print "mean: ", mu
-            sigma = std(feature, axis=0)
-            #print "std: ", sigma
-            feature = (feature - mu) / sigma
-            #print "abs: ", amax(feature,axis=0)-amin(feature,axis=0)
-            #print "max: ", amax(feature,axis=0)
-
-        return feature
 
 
